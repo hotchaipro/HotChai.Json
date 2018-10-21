@@ -1,5 +1,5 @@
 # HotChai.Json
-A basic JSON Streaming Object Reader/Writer for .NET.
+A basic JSON Streaming Object Reader/Writer for .NET written in C#.
 
 This library is based on **ObjectReader/Writer** classes intended for a messaging protocol, which enforce the restriction that the top-level JSON object MUST be `object` (not `element` per the [JSON specification](http://json.org)).
 
