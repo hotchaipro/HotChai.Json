@@ -10,7 +10,7 @@ I had previously written a lightweight JSON reader/writer specialized for anothe
 This library is based on **ObjectReader** and **ObjectWriter** classes intended for a messaging protocol, which enforce the restriction that the top-level JSON object MUST be `object` (not `element` per the [JSON specification](http://json.org)).
 
 ## Alternatives
-If you own both sides of the protocol (client and server), I suggest you take a look at my other project [Serialize.Net](https://github.com/hotchaipro/Serialize.Net), which supports a more space-efficient variation of JSON (member keys are integers instead of strings) as well as Bencode, XML, and my own [PBON](http://pbon.info) encoding (optimized for binary payloads).
+If you own both sides of the protocol (client and server), I suggest you take a look at my other project [Serialize.Net](https://github.com/hotchaipro/Serialize.Net), which supports a more space-efficient variation of JSON (member keys are integers instead of strings) as well as Bencode, XML, and my own [PBON](http://pbon.info) encoding optimized for binary payloads.
 
 ## Documentation
 The **[Serialize.Net Wiki](https://github.com/hotchaipro/serialize.net/wiki)** has examples of reading and writing objects with this API, which I won't duplicate here. Go check them out.
