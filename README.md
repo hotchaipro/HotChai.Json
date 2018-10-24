@@ -1,6 +1,11 @@
 # HotChai.Json
 A lightweight JSON Streaming Object Reader/Writer for .NET written in C#.
 
+## Why?
+I couldn't find a simple C# JSON streaming reader/writer implementation and I didn't want to take a dependency on that very popular and very large library you all know that's chock full of fancy features I don't need, like using reflection to automagically bloat up your objects.
+
+I had previously written a lightweight JSON reader/writer specialized for another project that only required a few changes to generalize, so here it is in case you find it useful for your own projects.
+
 ## A Safer JSON
 This library is based on **ObjectReader** and **ObjectWriter** classes intended for a messaging protocol, which enforce the restriction that the top-level JSON object MUST be `object` (not `element` per the [JSON specification](http://json.org)).
 
