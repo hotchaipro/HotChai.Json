@@ -13,6 +13,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)JsonWriter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)JsonToken.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ObjectReader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)JsonReaderExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ObjectWriter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)JsonWriterExtensions.cs" />
   </ItemGroup>
 </Project>
