@@ -24,8 +24,7 @@ namespace HotChai.Json
 {
     public sealed class JsonReader : ObjectReader<string>
     {
-        private StreamReader _reader;
-        private Stream _stream;
+        private TextReader _reader;
         private StringBuilder _stringBuilder;
         private char _peekChar;
         private bool _peekingChar;
@@ -46,15 +45,30 @@ namespace HotChai.Json
         {
             if (null == stream)
             {
-                throw new ArgumentNullException("stream");
+                throw new ArgumentNullException(nameof(stream));
             }
 
+            // TODO: Use a pooled StringBuilder
             this._stringBuilder = new StringBuilder();
-            this._stream = stream;
+
             this._reader = new StreamReader(
-                this._stream,
+                stream,
                 new UTF8Encoding(encoderShouldEmitUTF8Identifier: false, throwOnInvalidBytes: true),
                 detectEncodingFromByteOrderMarks: true);
+        }
+
+        public JsonReader(
+            TextReader textReader)
+        {
+            if (null == textReader)
+            {
+                throw new ArgumentNullException(nameof(textReader));
+            }
+
+            // TODO: Use a pooled StringBuilder
+            this._stringBuilder = new StringBuilder();
+
+            this._reader = textReader;
         }
 
         protected override string InvalidMemberKey
@@ -594,12 +608,13 @@ namespace HotChai.Json
 
         private void SkipNumber()
         {
+            // TODO: Efficient number skipping
             ReadNumber();
         }
 
         private void SkipString()
         {
-            // TODO: Efficient skipping
+            // TODO: Efficient string skipping
             ReadString(1024 * 1024, false);
         }
 

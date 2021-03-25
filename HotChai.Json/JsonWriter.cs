@@ -24,21 +24,30 @@ namespace HotChai.Json
 {
     public sealed class JsonWriter : ObjectWriter<String>
     {
-        private Stream _stream;
-        private StreamWriter _writer;
+        private TextWriter _writer;
 
         public JsonWriter(
             Stream stream)
         {
             if (null == stream)
             {
-                throw new ArgumentNullException("stream");
+                throw new ArgumentNullException(nameof(stream));
             }
 
-            this._stream = stream;
             this._writer = new StreamWriter(
-                this._stream,
+                stream,
                 new UTF8Encoding(encoderShouldEmitUTF8Identifier: false, throwOnInvalidBytes: true));
+        }
+
+        public JsonWriter(
+            TextWriter textWriter)
+        {
+            if (null == textWriter)
+            {
+                throw new ArgumentNullException(nameof(textWriter));
+            }
+
+            this._writer = textWriter;
         }
 
         protected override void WriteStartObjectToken()
