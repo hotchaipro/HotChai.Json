@@ -65,13 +65,13 @@ namespace HotChai.Json
         }
 
         /// <summary>
-        /// Reads the key of the next member of the serialized object.
+        /// Moves the reader to the next member of a serialized object.
         /// </summary>
         /// <returns>
         /// <c>true</c> if the next member key was read, or <c>false</c> if the 
         /// serialized object has no more members.
         /// </returns>
-        public bool ReadNextMemberKey()
+        public bool MoveToNextMember()
         {
             return this.State.MoveToNextObjectMember(this);
         }
