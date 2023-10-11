@@ -288,10 +288,38 @@ namespace HotChai.Json
                 }
             }
 
+            public override bool ReadStartArray(
+                ObjectReader<TMemberKey> reader)
+            {
+                if (reader.ReadStartArrayToken())
+                {
+                    // Start of a new array
+                    reader.PushState(StartArrayState.State);
+                    return true;
+                }
+                else
+                {
+                    // No array (null)
+                    return false;
+                }
+            }
+
             public override void Skip(
                 ObjectReader<TMemberKey> reader)
             {
-                ReadStartObject(reader);
+                MemberValueType type = reader.PeekValueType();
+                if (type == MemberValueType.Object)
+                {
+                    ReadStartObject(reader);
+                }
+                else if (type == MemberValueType.Array)
+                {
+                    ReadStartArray(reader);
+                }
+                else
+                {
+                    throw new NotSupportedException("Unsupported value type.");
+                }
             }
         }
 

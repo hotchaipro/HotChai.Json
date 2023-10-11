@@ -271,6 +271,13 @@ namespace HotChai.Json
 
                 writer.PushState(StartObjectState.State);
             }
+
+            public override void WriteStartArray(ObjectWriter<TMemberKey> writer)
+            {
+                writer.WriteStartArrayToken();
+
+                writer.PushState(ArrayState.State);
+            }
         }
 
         private sealed class StartObjectState : ObjectWriterState
